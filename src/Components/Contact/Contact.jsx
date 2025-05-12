@@ -7,7 +7,32 @@ import location_icon from '../../assets/location-icon.png'
 import white_arrow from '../../assets/white-arrow.png'
 
 const Contact = () => {
-  return (
+  
+  const [result, setResult] = React.useState(""); 
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "73779a12-7d43-4d6a-aba6-d6b3657840c4");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Message Envoyé !");
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+    }
+  };
+
+return (
     <div className='contact'>
         <div className="contact-col">
             <h3>Envoyez-Nous Un Message <img src={msg_icon} alt="" /></h3>
@@ -21,7 +46,7 @@ const Contact = () => {
             </ul>
         </div>
         <div className="contact-col">
-            <form action="">
+            <form onSubmit={onSubmit}>
                 <label >Votre Nom</label>
                 <input type="text" name='name' placeholder='Entrez Votre Nom' required/>
                 <label >Votre Numéro de Téléphone</label>
@@ -30,7 +55,7 @@ const Contact = () => {
                 <textarea name="message" rows="10" placeholder='Entrez Le Message' required></textarea>
                 <button type='submit' className='btn dark-btn'>Envoyer Maintenant <img src={white_arrow} alt="" /></button>
             </form>
-            <span></span>
+            <span>{result}</span>
         </div>
     </div>
   )
