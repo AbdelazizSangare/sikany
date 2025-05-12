@@ -7,10 +7,10 @@
     color: #07098d;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
 }
 .hero-text{
-    text-align: center;
+    text-align: left;
     max-width: 800px;
 }
 .hero-text h1{
