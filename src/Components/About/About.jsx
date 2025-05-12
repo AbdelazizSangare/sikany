@@ -14,12 +14,14 @@ const About = ({setPlayState}) => {
         <div className="about-right">
             <h3>A PROPOS DE NOTRE ECOLE</h3>
             <h2>Nourrir Les Dirigeants De Demain Aujourd'hui</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Ut eius dolorum incidunt fuga expedita laudantium deserunt facilis ipsum ipsam explicabo 
-                dolorem nostrum quia iure recusandae, possimus necessitatibus asperiores, placeat sed!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Ut eius dolorum incidunt fuga expedita laudantium deserunt facilis ipsum ipsam explicabo 
-                dolorem nostrum quia iure recusandae, possimus necessitatibus asperiores, placeat sed!</p>
+            <p>Notre établissement a pour vocation de former des esprits libres, critiques et engagés. 
+            Nous croyons fermement que chaque élève porte en lui le potentiel de devenir un acteur du 
+            changement, un leader éclairé, capable de façonner un avenir meilleur.</p>
+
+            <p>Grâce à un encadrement bienveillant, un enseignement rigoureux et des valeurs fortes, 
+              nous accompagnons nos élèves dans leur développement académique, humain et citoyen. 
+              Aujourd’hui, nous semons les graines du savoir et de la responsabilité pour récolter, demain, des femmes et des hommes prêts à relever les défis de leur époque.</p>
+
         </div>
     </div>
   )

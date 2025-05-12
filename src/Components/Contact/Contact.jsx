@@ -36,9 +36,7 @@ return (
     <div className='contact'>
         <div className="contact-col">
             <h3>Envoyez-Nous Un Message <img src={msg_icon} alt="" /></h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                Aliquam earum, molestiae deleniti voluptas facilis nobis nihil fuga et nostrum est veritatis iure. 
-                Commodi culpa quas sapiente, pariatur dolorem reiciendis quos.</p>
+            <p>Vous avez une question ou souhaitez inscrire votre enfant ? Nous sommes à votre écoute.</p>
             <ul>
                 <li><img src={mail_icon} alt="" />gsikanysongon@gmail.com</li>
                 <li><img src={phone_icon} alt="" />+225 0705903819 / +225 0545089895</li>

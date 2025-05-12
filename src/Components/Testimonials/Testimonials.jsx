@@ -40,10 +40,8 @@ const Testimonials = () => {
                                 <span>Collège Privé Sikany</span>
                             </div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, 
-                            cum accusamus! Facere et quas amet eius illum nam 
-                            deserunt accusamus esse, dolorum, aliquam voluptatum ad 
-                            doloribus reiciendis. Optio, a corrupti.</p>
+                        <p>"Depuis que je suis au Collège Sikany, j’ai beaucoup progressé en mathématiques et en confiance en moi. 
+                            Les profs sont à l’écoute et nous encouragent à donner le meilleur de nous-mêmes."</p>
                     </div>
                 </li>
                 <li>
@@ -55,10 +53,9 @@ const Testimonials = () => {
                                 <span>Collège Privé Sikany</span>
                             </div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, 
-                            cum accusamus! Facere et quas amet eius illum nam 
-                            deserunt accusamus esse, dolorum, aliquam voluptatum ad 
-                            doloribus reiciendis. Optio, a corrupti.</p>
+                        <p>"Ce que j’aime ici, c’est l’ambiance familiale et la rigueur. 
+                            On apprend dans le respect, et chacun a sa place. 
+                            J’ai découvert des passions que je ne connaissais pas grâce aux activités parascolaires."</p>
                     </div>
                 </li>
                 <li>
@@ -70,10 +67,9 @@ const Testimonials = () => {
                                 <span>Collège Privé Sikany</span>
                             </div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, 
-                            cum accusamus! Facere et quas amet eius illum nam 
-                            deserunt accusamus esse, dolorum, aliquam voluptatum ad 
-                            doloribus reiciendis. Optio, a corrupti.</p>
+                        <p>"Avant de venir ici, j’avais du mal à m’organiser. 
+                            Grâce au suivi personnalisé, j’ai appris à mieux gérer mon temps et à devenir plus autonome. 
+                            Aujourd’hui, je vise le lycée avec sérénité."</p>
                     </div>
                 </li>
                 <li>
@@ -85,10 +81,9 @@ const Testimonials = () => {
                                 <span>EPV Sikany</span>
                             </div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, 
-                            cum accusamus! Facere et quas amet eius illum nam 
-                            deserunt accusamus esse, dolorum, aliquam voluptatum ad 
-                            doloribus reiciendis. Optio, a corrupti.</p>
+                        <p>"Notre classe est calme et propre, et le maître nous aide toujours quand on ne comprend pas. 
+                            J’aime apprendre ici parce qu’on a tout ce qu’il faut pour bien travailler. 
+                            Je me sens en sécurité et je progresse chaque jour."</p>
                     </div>
                 </li>
             </ul>

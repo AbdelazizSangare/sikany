@@ -26,7 +26,8 @@ const Navbar = () => {
             <li><Link to='about' smooth={true} offset={150} duration={500}>A Propos</Link></li>
             <li><Link to='campus' smooth={true} offset={-260} duration={500}>Campus</Link></li>
             <li><Link to='testimonials' smooth={true} offset={-260} duration={500}>Témoignages</Link></li>
-            <li><a href="http://www.applicationvh.com/sikany/parent">Vie Scolaire</a></li>
+            <li><a href="http://www.applicationvh.com/sikany/parent" target="_blank" 
+            rel="noopener noreferrer">Vie Scolaire</a></li>
             <li><Link to='contact' smooth={true} offset={-260} duration={500} 
             className='btn'>Contactez-Nous</Link></li>
         </ul>

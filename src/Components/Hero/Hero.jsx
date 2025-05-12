@@ -7,9 +7,9 @@ const Hero = () => {
     <div className='hero container'>
         <div className="hero-text">
             <h1>Une éducation d’excellence au service de l’avenir de vos enfants.</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Ut eius dolorum incidunt fuga expedita laudantium deserunt facilis ipsum ipsam explicabo 
-                dolorem nostrum quia iure recusandae, possimus necessitatibus asperiores, placeat sed!</p>
+            <p>Depuis sa création, le Groupe Scolaire Sikany œuvre pour une éducation moderne, rigoureuse et inclusive. 
+              Notre établissement accueille les élèves de la maternelle au Secondaire dans un 
+              cadre propice à l’apprentissage, au développement personnel et à l’éveil citoyen.</p>
                 <button className='btn'>Explorez Plus <img src={dark_arrow} alt="" /></button>
         </div>
     </div>

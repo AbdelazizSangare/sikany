@@ -23,7 +23,7 @@ nav ul li{
     font-size: 22px;
 }
 .dark-nav{
-    background: #0706309d;
+    background: rgba(8, 0, 58, 0.4);
     transform: 0.5s;
 }
 .menu-icon{
