@@ -36,7 +36,7 @@ const Navbar = () => {
 
         <li className="has-submenu">
           <span onClick={() => isMobile && toggleSubmenu('actualites')}>
-            Actualités {isMobile && <span className="arrow">{openSubmenus['actualites'] ? '-' : '+'}</span>}
+            Actualités {isMobile && <span className="arrow">{openSubmenus['actualites'] ? '' : ''}</span>}
           </span>
           <ul className={`submenu ${openSubmenus['actualites'] ? 'show' : ''}`}>
             <li><Link to="decoupage" smooth={true} offset={-260} duration={500}>Découpage année scolaire</Link></li>
@@ -46,7 +46,7 @@ const Navbar = () => {
 
         <li className="has-submenu">
           <span onClick={() => isMobile && toggleSubmenu('inscriptions')}>
-            Inscriptions {isMobile && <span className="arrow">{openSubmenus['inscriptions'] ? '-' : '+'}</span>}
+            Inscriptions {isMobile && <span className="arrow">{openSubmenus['inscriptions'] ? '' : ''}</span>}
           </span>
           <ul className={`submenu ${openSubmenus['inscriptions'] ? 'show' : ''}`}>
             <li><Link to="inscription" smooth={true} offset={-260} duration={500}>Comment s'inscrire</Link></li>
@@ -58,7 +58,7 @@ const Navbar = () => {
 
         <li className="has-submenu">
           <span onClick={() => isMobile && toggleSubmenu('vie')}>
-            Vie scolaire {isMobile && <span className="arrow">{openSubmenus['vie'] ? '-' : '+'}</span>}
+            Vie scolaire {isMobile && <span className="arrow">{openSubmenus['vie'] ? '' : ''}</span>}
           </span>
           <ul className={`submenu ${openSubmenus['vie'] ? 'show' : ''}`}>
             <li><Link to="equipements" smooth={true} offset={-260} duration={500}>Équipements</Link></li>
