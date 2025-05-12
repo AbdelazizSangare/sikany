@@ -29,7 +29,47 @@ nav ul li{
 .menu-icon{
     display: none;
 }
+.has-submenu {
+  position: relative;
+  cursor: pointer;
+}
 
+.has-submenu > span {
+  font-size: 22px;
+}
+
+.submenu {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  background-color: rgba(8, 0, 58, 0.9);
+  padding: 10px 0;
+  list-style: none;
+  border-radius: 8px;
+  min-width: 200px;
+  z-index: 100;
+}
+
+/* Lors du hover */
+.has-submenu:hover .submenu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.submenu li {
+  padding: 8px 20px;
+  white-space: nowrap;
+  font-size: 18px;
+}
+
+.submenu li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
 
 /* ----- media query -----*/
 
@@ -68,4 +108,34 @@ nav ul li{
     .hide-mobile-menu{
         right: -200px;
     }
+    .submenu {
+    position: relative;
+    display: none;
+    top: 0;
+    left: 0;
+    background: transparent;
+    border-radius: 0;
+    padding-left: 15px;
+  }
+
+  .submenu li {
+    margin: 5px 0;
+    font-size: 20px;
+  }
+
+  .has-submenu:hover .submenu {
+    display: block;
+  }
+
+  .has-submenu > span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+  }
+
+  .arrow {
+    margin-left: 10px;
+    font-size: 14px;
+  }
 }
