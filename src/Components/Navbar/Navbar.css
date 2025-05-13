@@ -48,7 +48,7 @@ nav ul li{
   transform: translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
   position: absolute;
-  top: 35px;
+  top: 100%; /* plus fiable que "35px" */
   left: 0;
   background-color: rgba(8, 0, 58, 0.9);
   padding: 10px 0;
@@ -58,8 +58,8 @@ nav ul li{
   z-index: 100;
 }
 
-/* Lors du hover */
-.has-submenu:hover .submenu {
+.has-submenu:hover .submenu,
+.submenu:hover {
   display: block;
   opacity: 1;
   transform: translateY(0);
