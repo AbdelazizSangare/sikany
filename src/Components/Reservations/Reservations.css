@@ -10,7 +10,14 @@
   color: red;
   margin-left: 4px;
 }
-
+.reservations select {
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
 .form-container {
   display: flex;
   flex-direction: column;
@@ -38,7 +45,6 @@
 .reservations input[type="file"] {
   padding: 8px 0;
 }
-
 .reservations form {
   display: flex;
   flex-direction: column;
@@ -50,11 +56,9 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
   margin: auto;
 }
-
 .reservations label {
   margin: 10px 0 5px;
 }
-
 .reservations input,
 .reservations textarea {
   padding: 10px;
@@ -63,7 +67,6 @@
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
 .btn.dark-btn {
   display: flex;
   align-items: center;
@@ -75,7 +78,6 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
 .btn.dark-btn img {
   margin-left: 10px;
   width: 16px;

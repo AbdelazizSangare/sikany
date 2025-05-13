@@ -26,10 +26,14 @@ const Reservations = () => {
           </div>
 
           <div className="form-row">
-            <div className="form-group">
+            <d  iv className="form-group">
               <label>Sexe <span className="required">*</span></label>
-              <input type="text" name="sexe" required />
-            </div>
+                <select name="sexe" required>
+                <option value="">Sélectionnez un sexe</option>
+                <option value="Masculin">Masculin</option>
+                <option value="Féminin">Féminin</option>
+                </select>
+            </d>
             <div className="form-group">
               <label>Date de Naissance <span className="required">*</span></label>
               <input type="date" name="date_naissance" required />
