@@ -48,7 +48,8 @@ const Navbar = () => {
       <RouterLink to="/">
         <img src={logo} alt="Logo" className="logo" />
       </RouterLink>
-      <ul className={mobileMenu ? '' : 'hide-mobile-menu'}>
+      <img src={menu_icon} alt="Menu" className={`menu-icon ${mobileMenu ? 'active' : ''}`} onClick={toggleMenu}/>
+      <ul className={mobileMenu ? 'show' : 'hide-mobile-menu'}>
         <li>{handleNavItem('hero', 'Accueil')}</li>
 
         <li className="has-submenu">
@@ -86,7 +87,6 @@ const Navbar = () => {
         <li>{handleNavItem('about', 'À propos')}</li>
         <li>{handleNavItem('admin', 'Administration')}</li>
       </ul>
-      <img src={menu_icon} alt="Menu" className="menu-icon" onClick={toggleMenu} />
     </nav>
   );
 };

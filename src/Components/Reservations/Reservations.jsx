@@ -42,7 +42,7 @@ const Reservations = () => {
 
           <div className="form-row">
             <div className="form-group">
-              <label>Classe <span className="required">*</span></label>
+              <label>Niveau <span className="required">*</span></label>
               <input type="text" name="classe" required />
             </div>
             <div className="form-group">

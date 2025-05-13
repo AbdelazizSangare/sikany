@@ -15,8 +15,7 @@ nav{
     z-index: 10;
 }
 nav.container {
-  background: rgba(8, 0, 58, 0.4);
-  backdrop-filter: blur(40px);
+  background: linear-gradient(rgba(32, 15, 141, 0.4), rgba(8, 0, 58, 0.4));
 }
 
 nav img{
@@ -31,8 +30,8 @@ nav ul li{
     margin: 5px 20px;
     font-size: 22px;
 }
-.dark-nav{
-    background: rgba(8, 0, 58, 0.4);
+.dark-nav {
+    background: linear-gradient(rgba(32, 15, 141, 0.4), rgba(8, 0, 58, 0.4));
     transform: 0.5s;
 }
 .menu-icon{
@@ -53,7 +52,7 @@ nav ul li{
   transform: translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
   position: absolute;
-  top: 100%; /* plus fiable que "35px" */
+  top: 100%;
   left: 0;
   background-color: rgba(8, 0, 58, 0.9);
   padding: 10px 0;
@@ -109,11 +108,13 @@ nav ul li{
         display: block;
         margin: 25px 40px;
     }
-    .menu-icon{
-        display: block;
-        width: 30px;
-        cursor: pointer;
-    }
+    .menu-icon {
+    display: block;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
     .hide-mobile-menu{
         right: -200px;
     }
@@ -126,23 +127,19 @@ nav ul li{
     border-radius: 0;
     padding-left: 15px;
   }
-
   .submenu li {
     margin: 5px 0;
     font-size: 20px;
   }
-
   .has-submenu:hover .submenu {
     display: block;
   }
-
   .has-submenu > span {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 20px;
   }
-
   .arrow {
     margin-left: 10px;
     font-size: 14px;
