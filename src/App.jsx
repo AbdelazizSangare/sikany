@@ -11,6 +11,9 @@ import Contact from './Components/Contact/Contact';
 import Footer from './Components/Footer/Footer';
 import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
 import Reservations from './Components/Reservations/Reservations';
+import CommentInscr from './Components/Inscriptions/CommentInscr';
+import FraisScol from './Components/Inscriptions/FraisScol';
+import Infos from './Components/Inscriptions/Infos';
 
 function Accueil({ playState, setPlayState }) {
   return (
@@ -42,6 +45,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Accueil playState={playState} setPlayState={setPlayState} />} />
         <Route path="/reservations" element={<Reservations />} />
+        <Route path="/comment" element={<CommentInscr />} />
+        <Route path="/frais" element={<FraisScol />} />
+        <Route path="/infos" element={<Infos />} />
       </Routes>
     </Router>
   );

@@ -63,9 +63,9 @@ const Navbar = () => {
         <li className="has-submenu">
           <span onClick={() => isMobile && toggleSubmenu('inscriptions')}>Inscriptions</span>
           <ul className={`submenu ${openSubmenus['inscriptions'] ? 'show' : ''}`}>
-            <li>{handleNavItem('inscription', "Comment s'inscrire")}</li>
-            <li>{handleNavItem('frais', 'Frais de scolarité')}</li>
-            <li>{handleNavItem('rentree', 'Infos rentrée')}</li>
+            <li><RouterLink to="/comment">Comment S'inscrire</RouterLink></li>
+            <li><RouterLink to="/frais">Frais De Scolarité</RouterLink></li>
+            <li><RouterLink to="/infos">Infos Rentrée</RouterLink></li>
             <li><RouterLink to="/reservations">Réservations</RouterLink></li>
           </ul>
         </li>
