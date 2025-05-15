@@ -29,9 +29,9 @@ const Infos = () => {
       <section className="infos-section">
         <h2>Contact</h2>
         <p>
-          📞 <strong>+225 01 23 45 67 89</strong><br />
-          📧 <a href="mailto:contact@ecoleexemple.ci">contact@ecoleexemple.ci</a><br />
-          📍 Abidjan, Cocody Riviera Bonoumin
+          📞 <strong>+225 0705903819 / +225 0545089895</strong><br />
+          📧 <a href="mailto:gsikanysongon@gmail.com">gsikanysongon@gmail.com</a><br />
+          📍 Songon km17 Institut Pasteur Carrefour Ecole
         </p>
       </section>
     </div>
