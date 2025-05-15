@@ -1,10 +1,10 @@
 .page-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;   /* Vertical centering */
-  align-items: center;       /* Horizontal centering */
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  background-color: #f4f6f8; /* Light grey background */
+  background: #d3c5c5 !important;
   padding: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

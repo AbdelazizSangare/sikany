@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f4f6f8;
+  background: #d3c5c5 !important;
   padding: 20px;
   box-sizing: border-box;
 }

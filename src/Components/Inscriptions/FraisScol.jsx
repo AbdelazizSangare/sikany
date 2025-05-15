@@ -18,19 +18,24 @@ const FraisScol = () => {
         </thead>
         <tbody>
           <tr>
-            <td>CP1 - CP2</td>
-            <td>5 000 FCFA</td>
-            <td>60 000 FCFA</td>
+            <td>Maternelle</td>
+            <td>55 000 FCFA</td>
+            <td>180 000 FCFA</td>
           </tr>
           <tr>
-            <td>CE1 - CE2</td>
-            <td>5 000 FCFA</td>
-            <td>65 000 FCFA</td>
-          </tr>
-          <tr>
-            <td>CM1 - CM2</td>
-            <td>5 000 FCFA</td>
+            <td>Primaire</td>
             <td>70 000 FCFA</td>
+            <td>210 000 FCFA</td>
+          </tr>
+          <tr>
+            <td>College 1er Cycle Affecté</td>
+            <td>95 000 FCFA</td>
+            <td>120 000 FCFA</td>
+          </tr>
+          <tr>
+            <td>College 1er Cycle Non Affecté</td>
+            <td>95 000 FCFA</td>
+            <td>230 000 FCFA</td>
           </tr>
         </tbody>
       </table>
