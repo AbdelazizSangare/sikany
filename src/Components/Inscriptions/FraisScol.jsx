@@ -43,6 +43,26 @@ const FraisScol = () => {
       <p className="info">
         <strong>Note :</strong> Les frais sont payables en 3 tranches. Des réductions sont possibles pour les fratries.
       </p>
+      <div style={{ marginTop: '30px', textAlign: 'center' }}>
+        <a
+            href="/MATERNELLE_PRIMAIRE.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#1e88e5', textDecoration: 'underline' }}
+        >
+            📄 VOIR LA FICHE DE RENSEIGNEMENT PRIMAIRE & MATERNELLE
+        </a>
+        </div>
+        <div style={{ marginTop: '30px', textAlign: 'center' }}>
+        <a
+            href="/COLLEGE.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#1e88e5', textDecoration: 'underline' }}
+        >
+            📄 VOIR LA FICHE DE RENSEIGNEMENT DU COLLEGE
+        </a>
+        </div>
     </div>
     </div>
   );
