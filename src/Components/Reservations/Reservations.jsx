@@ -13,7 +13,6 @@ const niveauxParType = {
   ],
   Autres: ["Formation Pro", "Cours du soir", "Spécialisation"]
 };
-
 const Reservations = () => {
   const [formData, setFormData] = useState({
     matricule: '',
@@ -27,7 +26,6 @@ const Reservations = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -35,7 +33,6 @@ const Reservations = () => {
       [name]: value
     }));
   };
-
   const handleFileChange = (e) => {
   const file = e.target.files[0];
   if (file && !['application/pdf', 'image/jpeg', 'image/png'].includes(file.type)) {
@@ -48,13 +45,12 @@ const Reservations = () => {
   }
   setFormData(prev => ({ ...prev, bulletinPath: file }));
 };
-
   const handleTypeChange = (e) => {
     const value = e.target.value;
     setFormData(prev => ({
       ...prev,
       type_enseignement: value,
-      niveau: '' // reset niveau si le type change
+      niveau: ''
     }));
   };
 
@@ -95,7 +91,6 @@ const Reservations = () => {
 };
 
   const isFormValid = Object.values(formData).every(val => val !== '' && val !== null);
-
   return (
     <>
       <Navbar />
@@ -116,7 +111,6 @@ const Reservations = () => {
               placeholder="Entrez votre matricule"
               required
             />
-
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="nom">Nom <span className="required">*</span></label>
@@ -143,7 +137,6 @@ const Reservations = () => {
                 />
               </div>
             </div>
-
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="sexe">Sexe <span className="required">*</span></label>
@@ -171,7 +164,6 @@ const Reservations = () => {
                 />
               </div>
             </div>
-
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="type_enseignement">Type d’Enseignement <span className="required">*</span></label>
@@ -188,7 +180,6 @@ const Reservations = () => {
                   ))}
                 </select>
               </div>
-
               <div className="form-group">
                 <label htmlFor="niveau">Niveau <span className="required">*</span></label>
                 <select
@@ -207,7 +198,6 @@ const Reservations = () => {
                 </select>
               </div>
             </div>
-
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="bulletin">Bulletin <span className="required">*</span></label>
@@ -220,7 +210,6 @@ const Reservations = () => {
                 />
               </div>
             </div>
-
             <button type="submit" className="btn dark-btn" disabled={!isFormValid}>
               Envoyer Maintenant <img src={white_arrow} alt="flèche blanche" />
             </button>
