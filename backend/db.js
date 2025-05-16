@@ -5,12 +5,12 @@ const connection = mysql.createConnection({
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
-  port: 3306
+  port: process.env.DB_PORT
 });
 
 connection.connect((err) => {
   if (err) throw err;
-  console.log('Connecté à MySQL');
+  console.log('Connecté à MySQL Distant');
 });
 
 module.exports = connection;
