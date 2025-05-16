@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 app.use('/uploads', express.static('/tmp'));
 
 // Routes
-app.use('/reservations', reservationRoutes);
+app.use('/api/reservations', reservationRoutes);
 
 // 404 Handler
 app.use((req, res) => {

@@ -9,6 +9,6 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/reservations', reservationsRoutes);
+app.use('/api/reservations', reservationsRoutes);
 
 module.exports = app;
