@@ -4,6 +4,15 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   base: '/',
   plugins: [react()],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://sikany.onrender.com', // ou http://localhost:5000 si tu testes localement
+        changeOrigin: true,
+        secure: false
+      }
+    }
+  },
   preview: {
     host: true,
     allowedHosts: ['sikany.onrender.com']
