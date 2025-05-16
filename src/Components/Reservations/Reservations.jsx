@@ -67,7 +67,7 @@ const Reservations = () => {
     });
 
     try {
-      const response = await fetch('https://sikany.onrender.com/api/reservations', {
+      const response = await fetch('https://sikany.onrender.com/reservations', {
         method: 'POST',
         body: data
       });
