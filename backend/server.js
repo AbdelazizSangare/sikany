@@ -1,10 +1,14 @@
+import cors from 'cors';
+
 const express = require('express');
 const cors = require('cors');
 const reservationRoutes = require('./routes/reservations');
 const app = express();
 
 app.use(cors({
-    origin: 'https://sikany.onrender.com'
+  origin: ['http://localhost:5173', 'https://sikany.onrender.com'],
+  methods: ['GET', 'POST'],
+  credentials: true
 }));
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
