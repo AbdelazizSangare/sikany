@@ -17,22 +17,12 @@ const CommentIscr = () => {
         <strong>Note :</strong> L'inscription est validée uniquement après paiement et vérification des pièces.
       </div>
       <div style={{ marginTop: '30px', textAlign: 'center' }}>
-        <a
-            href="/MATERNELLE_PRIMAIRE.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: '#1e88e5', textDecoration: 'underline' }}
-        >
+        <a href="/MATERNELLE_PRIMAIRE.pdf" target="_blank" rel="noopener noreferrer"  style={{ color: '#1e88e5' }} >
             📄 VOIR LA FICHE DE RENSEIGNEMENT PRIMAIRE & MATERNELLE
         </a>
         </div>
         <div style={{ marginTop: '30px', textAlign: 'center' }}>
-        <a
-            href="/COLLEGE.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: '#1e88e5', textDecoration: 'underline' }}
-        >
+        <a href="/COLLEGE.pdf" target="_blank" rel="noopener noreferrer" style={{ color: '#1e88e5' }}>
             📄 VOIR LA FICHE DE RENSEIGNEMENT DU COLLEGE
         </a>
         </div>
