@@ -5,11 +5,21 @@ const db = require('../db');
 const router = express.Router();
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, 'uploads/'),
+  destination: (req, file, cb) => cb(null, '/tmp/'),
   filename: (req, file, cb) =>
     cb(null, Date.now() + path.extname(file.originalname))
 });
-const upload = multer({ storage: storage });
+const upload = multer({
+  storage,
+  fileFilter: (req, file, cb) => {
+    const ext = path.extname(file.originalname).toLowerCase();
+    if (['.pdf', '.jpg', '.jpeg', '.png'].includes(ext)) {
+      cb(null, true);
+    } else {
+      cb(new Error('Seuls les fichiers PDF, JPG, JPEG et PNG sont autorisés'));
+    }
+  }
+});
 
 router.post('/', upload.single('bulletinPath'), (req, res) => {
   const {
@@ -22,7 +32,7 @@ router.post('/', upload.single('bulletinPath'), (req, res) => {
     niveau
   } = req.body;
 
-  const bulletin = req.file?.filename || null;
+  const bulletin = req.file ? `/tmp/${req.file.filename}` : null;
 
   const sql = `INSERT INTO reservations 
     (matricule, nom, prenoms, sexe, date_naissance, type_enseignement, niveau, bulletin)
