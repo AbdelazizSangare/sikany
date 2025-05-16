@@ -8,5 +8,5 @@ app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 app.use('/api/reservations', reservationRoutes);
 
-const PORT = 10000;
+const PORT = process.env.DB_PORT || 4000;
 app.listen(PORT, () => console.log(`Serveur en écoute sur le port ${PORT}`));
