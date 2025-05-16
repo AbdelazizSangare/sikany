@@ -5,8 +5,8 @@ const reservationsRoutes = require('./routes/reservations');
 const app = express();
 
 // Middleware
-app.use(cors()); // autorise React à parler à Express
-app.use(express.json()); // parse les body en JSON
+app.use(cors());
+app.use(express.json());
 
 // Routes
 app.use('/api/reservations', reservationsRoutes);
