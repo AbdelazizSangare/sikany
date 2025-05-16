@@ -67,7 +67,7 @@ const Reservations = () => {
     });
 
     try {
-      const response = await fetch('https://sikany.onrender.com/reservations', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/reservations`, {
         method: 'POST',
         body: data
       });
