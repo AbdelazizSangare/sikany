@@ -13,6 +13,7 @@ const niveauxParType = {
   ],
   Autres: ["Formation Pro", "Cours du soir", "Spécialisation"]
 };
+
 const Reservations = () => {
   const [formData, setFormData] = useState({
     matricule: '',
@@ -26,6 +27,7 @@ const Reservations = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -33,18 +35,20 @@ const Reservations = () => {
       [name]: value
     }));
   };
+
   const handleFileChange = (e) => {
-  const file = e.target.files[0];
-  if (file && !['application/pdf', 'image/jpeg', 'image/png'].includes(file.type)) {
-    alert("Fichier non autorisé. Veuillez choisir un PDF, JPEG ou PNG.");
-    return;
-  }
-  if (file && file.size > 2 * 1024 * 1024) {
-    alert("Fichier trop volumineux (max 2 Mo)");
-    return;
-  }
-  setFormData(prev => ({ ...prev, bulletinPath: file }));
-};
+    const file = e.target.files[0];
+    if (file && !['application/pdf', 'image/jpeg', 'image/png'].includes(file.type)) {
+      alert("Fichier non autorisé. Veuillez choisir un PDF, JPEG ou PNG.");
+      return;
+    }
+    if (file && file.size > 2 * 1024 * 1024) {
+      alert("Fichier trop volumineux (max 2 Mo)");
+      return;
+    }
+    setFormData(prev => ({ ...prev, bulletinPath: file }));
+  };
+
   const handleTypeChange = (e) => {
     const value = e.target.value;
     setFormData(prev => ({
@@ -55,42 +59,43 @@ const Reservations = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const data = new FormData();
-  Object.entries(formData).forEach(([key, value]) => {
-    data.append(key, value);
-  });
+    const data = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      data.append(key, value);
+    });
 
-  try {
-    const response = await fetch('https://sikany.onrender.com/api/reservations', {
-  method: 'POST',
-  body: data
-});
-
-    if (response.ok) {
-      setSubmitted(true);
-      setFormData({
-        matricule: '',
-        nom: '',
-        prenoms: '',
-        sexe: '',
-        date_naissance: '',
-        type_enseignement: '',
-        niveau: '',
-        bulletinPath: null
+    try {
+      const response = await fetch('https://sikany.onrender.com/api/reservations', {
+        method: 'POST',
+        body: data
       });
-    } else {
-      console.log(await response.text());
-      alert("Erreur lors de l'envoi du formulaire.");
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({
+          matricule: '',
+          nom: '',
+          prenoms: '',
+          sexe: '',
+          date_naissance: '',
+          type_enseignement: '',
+          niveau: '',
+          bulletinPath: null
+        });
+      } else {
+        console.log(await response.text());
+        alert("Erreur lors de l'envoi du formulaire.");
+      }
+    } catch (error) {
+      console.error("Erreur réseau :", error);
+      alert("Erreur réseau : " + error.message);
     }
-  } catch (error) {
-  console.error("Erreur réseau :", error);
-  alert("Erreur réseau : " + error.message);
-}
-};
+  };
 
   const isFormValid = Object.values(formData).every(val => val !== '' && val !== null);
+
   return (
     <>
       <Navbar />

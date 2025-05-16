@@ -1,5 +1,6 @@
-require('dotenv').config();
 const mysql = require('mysql2');
+require('dotenv').config();
+
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -9,8 +10,11 @@ const connection = mysql.createConnection({
 });
 
 connection.connect((err) => {
-  if (err) throw err;
-  console.log('Connecté à MySQL Distant');
+  if (err) {
+    console.error('Erreur de connexion à MySQL :', err);
+    process.exit(1);
+  }
+  console.log('Connecté à MySQL');
 });
 
 module.exports = connection;
