@@ -84,9 +84,11 @@ const Reservations = () => {
           niveau: '',
           bulletinPath: null
         });
+        alert("Fichier envoyé avec succès !");
       } else {
-        console.log(await response.text());
-        alert("Erreur lors de l'envoi du formulaire.");
+        const errText = await response.text();
+        console.log(errText); // 🧾 Pour voir la réponse brute du serveur
+        alert("Erreur lors de l'envoi du formulaire :\n" + errText);
       }
     } catch (error) {
       console.error("Erreur réseau :", error);

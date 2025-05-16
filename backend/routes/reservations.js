@@ -57,6 +57,8 @@ router.post('/', upload.single('bulletinPath'), (req, res) => {
       console.error("Erreur MySQL :", err);
       return res.status(500).send('Erreur base de données');
     }
+    console.log('req.body:', req.body);
+    console.log('req.file:', req.file);
     res.status(200).send('Réservation enregistrée avec succès');
   });
 });
