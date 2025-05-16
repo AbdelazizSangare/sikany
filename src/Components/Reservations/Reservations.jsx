@@ -87,7 +87,7 @@ const Reservations = () => {
         alert("Fichier envoyé avec succès !");
       } else {
         const errText = await response.text();
-        console.log(errText); // 🧾 Pour voir la réponse brute du serveur
+        console.log(errText);
         alert("Erreur lors de l'envoi du formulaire :\n" + errText);
       }
     } catch (error) {
