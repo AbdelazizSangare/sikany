@@ -58,43 +58,45 @@ const Reservations = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = (e) => {
+  e.preventDefault();
 
-    const data = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      data.append(key, value);
-    });
+  const data = new FormData();
+  Object.entries(formData).forEach(([key, value]) => {
+    data.append(key, value);
+  });
 
-    try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/reservations`, {
-        method: 'POST',
-        body: data
-      });
-
-      if (response.ok) {
-        setSubmitted(true);
-        setFormData({
-          matricule: '',
-          nom: '',
-          prenoms: '',
-          sexe: '',
-          date_naissance: '',
-          type_enseignement: '',
-          niveau: '',
-          bulletinPath: null
+  fetch(`${import.meta.env.VITE_API_URL}/reservations`, {
+    method: 'POST',
+    body: data
+  })
+    .then(res => {
+      if (!res.ok) {
+        return res.text().then(text => {
+          throw new Error(`Erreur serveur: ${res.status} - ${text}`);
         });
-        alert("Fichier envoyé avec succès !");
-      } else {
-        const errText = await response.text();
-        console.log(errText);
-        alert("Erreur lors de l'envoi du formulaire :\n" + errText);
       }
-    } catch (error) {
-      console.error("Erreur réseau :", error);
-      alert("Erreur réseau : " + error.message);
-    }
-  };
+      return res.json();
+    })
+    .then(data => {
+      setSubmitted(true);
+      setFormData({
+        matricule: '',
+        nom: '',
+        prenoms: '',
+        sexe: '',
+        date_naissance: '',
+        type_enseignement: '',
+        niveau: '',
+        bulletinPath: null
+      });
+      alert("Fichier envoyé avec succès !");
+    })
+    .catch(err => {
+      console.error('Erreur attrapée :', err.message);
+      alert("Erreur lors de l'envoi du formulaire : " + err.message);
+    });
+};
 
   const isFormValid = Object.values(formData).every(val => val !== '' && val !== null);
 
