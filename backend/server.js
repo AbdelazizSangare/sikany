@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const reservationRoutes = require('./routes/reservations');
+const path = require('path');
 require('dotenv').config(); // Charger .env
 
 const app = express();
@@ -11,6 +12,14 @@ app.use(cors({
   methods: ['GET', 'POST'],
   credentials: true
 }));
+if (process.env.NODE_ENV === 'production') {
+  const clientBuildPath = path.join(__dirname, 'client', 'dist');
+  app.use(express.static(clientBuildPath));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(clientBuildPath, 'index.html'));
+  });
+}
 
 // JSON parsing
 app.use(express.json());
