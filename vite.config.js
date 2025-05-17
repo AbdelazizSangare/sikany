@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://sikany.onrender.com', // ou http://localhost:5000 si tu testes localement
+        target: 'https://sikany.onrender.com',
         changeOrigin: true,
         secure: false
       }

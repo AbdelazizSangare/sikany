@@ -24,7 +24,7 @@ const upload = multer({
 });
 
 // Enregistrement de réservation
-router.post('/', upload.single('bulletinPath'), (req, res) => {
+router.post('/reservations', upload.single('bulletinPath'), (req, res) => {
   const {
     matricule,
     nom,

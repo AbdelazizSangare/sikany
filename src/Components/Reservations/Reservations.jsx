@@ -107,7 +107,7 @@ const Reservations = () => {
           {submitted && (
             <p className="success-message">✅ Votre réservation a été envoyée avec succès !</p>
           )}
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} method="POST" action="/api/reservations">
             <label htmlFor="matricule">Matricule <span className="required">*</span></label>
             <input
               id="matricule"
