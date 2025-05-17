@@ -66,7 +66,7 @@ const Reservations = () => {
     data.append(key, value);
   });
 
-  fetch(`${import.meta.env.VITE_API_URL}/reservations`, {
+  fetch('/api/reservations', {
     method: 'POST',
     body: data
   })
