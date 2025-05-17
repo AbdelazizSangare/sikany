@@ -66,7 +66,7 @@ const Reservations = () => {
     data.append(key, value);
   });
 
-  fetch('/api/submit', {
+  fetch('/api/reservations', {
     method: 'POST',
     body: data
   })
