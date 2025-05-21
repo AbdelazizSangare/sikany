@@ -1,0 +1,52 @@
+name: Déploiement React + Node.js
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Cloner le repo
+      uses: actions/checkout@v3
+
+    - name: Installer Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Installer & Build Frontend
+      working-directory: src
+      run: |
+        npm ci
+        npm run build
+
+    - name: Installer Backend
+      working-directory: backend
+      run: |
+        npm ci
+
+    - name: Copier les fichiers vers le serveur
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        source: |
+          backend/
+          dist/
+        target: /home/deploy/app/
+
+    - name: Redémarrer le backend sur le serveur
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          pm2 stop all || true
+          cd /home/deploy/app/backend
+          pm2 start server.js

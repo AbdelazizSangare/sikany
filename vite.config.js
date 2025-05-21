@@ -1,13 +1,17 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
+// Récupération des variables d'environnement
+const API_URL = process.env.VITE_API_URL;
+const HOST_URL = process.env.VITE_HOST_URL;
+
 export default defineConfig({
   base: '/',
   plugins: [react()],
   server: {
     proxy: {
       '/api': {
-        target: 'https://sikany.onrender.com',
+        target: API_URL,
         changeOrigin: true,
         secure: false
       }
@@ -15,6 +19,6 @@ export default defineConfig({
   },
   preview: {
     host: true,
-    allowedHosts: ['sikany.onrender.com']
+    allowedHosts: [HOST_URL]
   }
 });
