@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch: # Permet le déploiement manuel
+
+env:
+  NODE_ENV: production
 
 jobs:
   deploy:
@@ -11,23 +15,46 @@ jobs:
 
     steps:
     - name: Cloner le repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Installer Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
+        cache: 'npm'
 
-    - name: Installer & Build Frontend
-      working-directory: src
+    - name: Installer les dépendances Frontend
+      working-directory: .
       run: |
         npm ci
         npm run build
 
-    - name: Installer Backend
+    - name: Installer les dépendances Backend
       working-directory: backend
       run: |
-        npm ci
+        npm ci --production
+
+    - name: Créer le fichier .env pour le backend
+      working-directory: backend
+      run: |
+        cat << EOF > .env
+        PORT=${{ secrets.BACKEND_PORT }}
+        DB_HOST=${{ secrets.DB_HOST }}
+        DB_USER=${{ secrets.DB_USER }}
+        DB_PASS=${{ secrets.DB_PASS }}
+        DB_NAME=${{ secrets.DB_NAME }}
+        CORS_ORIGIN=${{ secrets.CORS_ORIGIN }}
+        MAX_FILE_SIZE=2097152
+        NODE_ENV=production
+        EOF
+
+    - name: Créer le fichier .env pour le frontend
+      run: |
+        cat << EOF > .env.production
+        VITE_API_URL=${{ secrets.VITE_API_URL }}
+        VITE_HOST_URL=${{ secrets.VITE_HOST_URL }}
+        VITE_WEB3FORMS_KEY=${{ secrets.VITE_WEB3FORMS_KEY }}
+        EOF
 
     - name: Copier les fichiers vers le serveur
       uses: appleboy/scp-action@master
@@ -38,15 +65,57 @@ jobs:
         source: |
           backend/
           dist/
+          .env.production
         target: /home/deploy/app/
+        strip_components: 0
 
-    - name: Redémarrer le backend sur le serveur
+    - name: Configuration et redémarrage du serveur
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
+          # Créer le dossier uploads s'il n'existe pas
+          mkdir -p /home/deploy/app/backend/uploads
+          
+          # Définir les permissions appropriées
+          chmod 755 /home/deploy/app/backend/uploads
+          
+          # Copier le fichier .env.production vers le bon emplacement
+          mv /home/deploy/app/.env.production /home/deploy/app/dist/.env
+          
+          # Arrêter les processus existants
           pm2 stop all || true
+          
+          # Nettoyer les processus PM2
+          pm2 delete all || true
+          
+          # Démarrer le backend
           cd /home/deploy/app/backend
-          pm2 start server.js
+          pm2 start server.js --name "sikany-backend" --time
+          
+          # Démarrer le serveur web (si nécessaire)
+          pm2 start serve --name "sikany-frontend" -- -s dist -l 3000 --time
+          
+          # Sauvegarder la configuration PM2
+          pm2 save
+          
+          # Vérifier le statut
+          pm2 status
+          
+          # Vérifier les logs
+          pm2 logs --lines 10
+
+    - name: Vérification du déploiement
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          # Vérifier que le backend répond
+          curl -f http://localhost:${{ secrets.BACKEND_PORT }}/api/health || exit 1
+          
+          # Vérifier que le frontend est accessible
+          curl -f http://localhost:3000 || exit 1
