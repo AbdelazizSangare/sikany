@@ -77,6 +77,12 @@ jobs:
         cp -r backend/* deploy/backend/
         cp backend/.env deploy/backend/
         
+        # Définir les permissions
+        find deploy/public_html -type d -exec chmod 755 {} \;
+        find deploy/public_html -type f -exec chmod 644 {} \;
+        find deploy/backend -type d -exec chmod 755 {} \;
+        find deploy/backend -type f -exec chmod 644 {} \;
+        
         # Créer le fichier .htaccess pour le frontend
         cat << EOF > deploy/public_html/.htaccess
         RewriteEngine On
