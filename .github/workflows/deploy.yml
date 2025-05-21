@@ -89,21 +89,19 @@ jobs:
         RewriteRule ^(.*)$ app.js [QSA,L]
         EOF
 
+    - name: Installer lftp
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y lftp
+
     - name: Déployer via FTP
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      with:
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_USER }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./deploy/
-        server-dir: ${{ secrets.FTP_PATH }}
-        dangerous-clean-slate: false
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/.env
-          **/.env.*
+      run: |
+        lftp -c "
+          set ssl:verify-certificate no;
+          open -u ${{ secrets.FTP_USER }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOST }};
+          mirror --reverse --delete --verbose ./deploy/ ${{ secrets.FTP_PATH }};
+          bye;
+        "
 
     - name: Nettoyer
       run: |
