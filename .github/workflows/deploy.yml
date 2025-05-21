@@ -90,20 +90,14 @@ jobs:
         EOF
 
     - name: Déployer via FTP
-      uses: SamKirkland/FTP-Deploy-Action@4.3.4
-      with:
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_USER }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./deploy/
-        server-dir: /
-        dangerous-clean-slate: false
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/.env
-          **/.env.*
+      uses: easingthemes/ssh-deploy@main
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.FTP_PASSWORD }}
+        ARGS: "-avz --delete"
+        SOURCE: "deploy/"
+        REMOTE_HOST: ${{ secrets.FTP_HOST }}
+        REMOTE_USER: ${{ secrets.FTP_USER }}
+        TARGET: "/"
 
     - name: Nettoyer
       run: |
