@@ -101,8 +101,10 @@ jobs:
 
     - name: Déployer le frontend
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      env:
+        FTP_SERVER: ${{ secrets.FTP_HOST }}
       with:
-        server: ${{ secrets.FTP_HOST }}
+        server: ${{ env.FTP_SERVER }}
         username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./deploy/public_html/
@@ -111,8 +113,10 @@ jobs:
 
     - name: Déployer le backend
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      env:
+        FTP_SERVER: ${{ secrets.FTP_HOST }}
       with:
-        server: ${{ secrets.FTP_HOST }}
+        server: ${{ env.FTP_SERVER }}
         username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./deploy/backend/
