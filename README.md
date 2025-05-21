@@ -10,3 +10,31 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+# Sikany
+
+Application de gestion scolaire pour le Collège Sikany.
+
+## Dernière mise à jour
+- Déploiement automatique CI/CD configuré
+- Système de gestion des bulletins par matricule
+- Interface utilisateur améliorée
+
+## Installation
+
+```bash
+# Installation des dépendances
+npm install
+
+# Démarrage en développement
+npm run dev
+
+# Build pour la production
+npm run build
+```
+
+## Fonctionnalités
+- Gestion des réservations
+- Upload de bulletins
+- Formulaire de contact
+- Interface responsive
