@@ -91,28 +91,33 @@ jobs:
 
     - name: Vérifier la structure des dossiers
       run: |
-        echo "Contenu du dossier deploy :"
-        ls -la deploy/
-        echo "Contenu du dossier deploy/public_html :"
+        echo "=== Structure des dossiers ==="
+        pwd
+        ls -R deploy/
+        echo "=== Contenu de public_html ==="
         ls -la deploy/public_html/
-        echo "Contenu du dossier deploy/backend :"
+        echo "=== Contenu de backend ==="
         ls -la deploy/backend/
 
-    - name: Déployer via FTP
+    - name: Déployer le frontend
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
         server: ${{ secrets.FTP_HOST }}
         username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./deploy/
-        server-dir: ${{ secrets.FTP_PATH }}
+        local-dir: ./deploy/public_html/
+        server-dir: ${{ secrets.FTP_PATH }}/public_html/
         dangerous-clean-slate: false
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/.env
-          **/.env.*
+
+    - name: Déployer le backend
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./deploy/backend/
+        server-dir: ${{ secrets.FTP_PATH }}/backend/
+        dangerous-clean-slate: false
 
     - name: Nettoyer
       run: |
