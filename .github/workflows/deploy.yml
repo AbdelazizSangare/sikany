@@ -1,7 +1,7 @@
 name: Déploiement React + Node.js
 
 # Dernière mise à jour : Réinitialisation des secrets GitHub
-# - FTP_HOST, FTP_USER, FTP_PASSWORD, FTP_PATH
+# - FTP_HOST, FTP_USER, FTP_PASSWORD, FTP_PATH (vérifié)
 # - DB_HOST, DB_USER, DB_PASS, DB_NAME
 # - BACKEND_PORT, CORS_ORIGIN
 # - VITE_API_URL, VITE_HOST_URL, VITE_WEB3FORMS_KEY
