@@ -26,7 +26,7 @@ jobs:
     - name: Installer les dépendances Frontend
       working-directory: .
       run: |
-        npm ci
+        npm ci --include=dev
         npm run build
 
     - name: Installer les dépendances Backend
