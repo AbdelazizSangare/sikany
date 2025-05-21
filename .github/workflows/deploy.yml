@@ -89,19 +89,30 @@ jobs:
         RewriteRule ^(.*)$ app.js [QSA,L]
         EOF
 
-    - name: Installer lftp
+    - name: Vérifier la structure des dossiers
       run: |
-        sudo apt-get update
-        sudo apt-get install -y lftp
+        echo "Contenu du dossier deploy :"
+        ls -la deploy/
+        echo "Contenu du dossier deploy/public_html :"
+        ls -la deploy/public_html/
+        echo "Contenu du dossier deploy/backend :"
+        ls -la deploy/backend/
 
     - name: Déployer via FTP
-      run: |
-        lftp -c "
-          set ssl:verify-certificate no;
-          open -u ${{ secrets.FTP_USER }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOST }};
-          mirror --reverse --delete --verbose ./deploy/ ${{ secrets.FTP_PATH }};
-          bye;
-        "
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./deploy/
+        server-dir: ${{ secrets.FTP_PATH }}
+        dangerous-clean-slate: false
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/.env
+          **/.env.*
 
     - name: Nettoyer
       run: |
